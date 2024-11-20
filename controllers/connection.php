@@ -1,10 +1,8 @@
-
-
 <?php
 // Konfigurasi koneksi
-$dsn = '//localhost:1522/orcl'; // Sesuaikan dengan host, port, dan SID Anda
-$username = 'hr';        // Sesuaikan username Oracle
-$password = 'hr';        // Sesuaikan password Oracle
+$dsn = '//localhost:1522/orcl';
+$username = 'hr';      
+$password = 'hr';       
 
 // Membuat koneksi
 $conn = oci_connect($username, $password, $dsn);

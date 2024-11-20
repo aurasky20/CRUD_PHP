@@ -18,12 +18,16 @@ if (!oci_execute($stid)) {
 // Menampilkan data dalam bentuk tabel HTML
 echo "<main class='col-md-9 ms-sm-auto col-lg-10 px-md-4'>"; 
 echo "<div class='container mt-5'>"; 
-echo "<h2 class='text-center mb-5'>Data Pegawai</h2>"; // Judul tabel
+
+// Judul tabel
+echo "<h2 class='text-center mb-5'>Data Pegawai</h2>"; 
+
+//Tambah Pegawai Button
 echo "  <div class='btn-tambah-pegawai mb-2'>
             <button type='button' class='btn btn-warning mb-3 px-3 shadow-sm' data-bs-toggle='modal' data-bs-target='#formModal'>
                 Tambah Pegawai
             </button>
-        </div>"; //Tambah Pegawai Button
+        </div>"; 
 echo "<table class='table table-striped table-bordered mb-5'> 
         <thead class='table-dark'>
             <tr>
