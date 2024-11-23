@@ -2,7 +2,7 @@
 // Menyertakan koneksi dari connection.php
 include "controllers/connection.php";
 include "template/header.php";
-include "controllers/controller.php";
+include "controllers/insert.php";
 
 // Query untuk mengambil data dari tabel PEGAWAI
 $query = "SELECT * FROM PEGAWAI";
@@ -54,19 +54,19 @@ while ($row = oci_fetch_assoc($stid)) {
         <td class='text-center'>" . htmlspecialchars($row['SALARY'] ?? '', ENT_QUOTES) . "</td>
         <td class='text-center'>" . htmlspecialchars($row['DEPARTMENT_ID'] ?? '', ENT_QUOTES) . "</td>
         <td class='d-flex justify-content-evenly'> 
-                    <button 
-                        class='btn btn-warning btn-sm edit-btn' 
-                        data-id='" . htmlspecialchars($row['EMPLOYEE_ID'] ?? '') . "'
-                        data-nama='" . htmlspecialchars($row['FIRST_NAME'] ?? '') . "'
-                        data-email='" . htmlspecialchars($row['EMAIL'] ?? '') . "'
-                        data-telepon='" . htmlspecialchars($row['PHONE_NUMBER'] ?? '') . "' 
-                        data-tgl_diterima='" . (isset($row['HIRE_DATE']) ? date('Y-m-d', strtotime($row['HIRE_DATE'])) : '') . "' 
-                        data-gaji='" . htmlspecialchars($row['SALARY'] ?? '') . "' 
-                        data-department='" . htmlspecialchars($row['DEPARTMENT_ID'] ?? '') . "' 
-                        data-bs-toggle='modal' data-bs-target='#editModal'>
-                        Edit
-                    </button>
-            <a href='controllers/hapus.php?id=" . htmlspecialchars($row['EMPLOYEE_ID'] ?? '', ENT_QUOTES) . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data ini?\")'>Hapus</a>
+            <button 
+                class='btn btn-warning btn-sm edit-btn' 
+                data-id='" . htmlspecialchars($row['EMPLOYEE_ID'] ?? '') . "'
+                data-nama='" . htmlspecialchars($row['FIRST_NAME'] ?? '') . "'
+                data-email='" . htmlspecialchars($row['EMAIL'] ?? '') . "'
+                data-telepon='" . htmlspecialchars($row['PHONE_NUMBER'] ?? '') . "' 
+                data-tgl_diterima='" . (isset($row['HIRE_DATE']) ? date('Y-m-d', strtotime($row['HIRE_DATE'])) : '') . "' 
+                data-gaji='" . htmlspecialchars($row['SALARY'] ?? '') . "' 
+                data-department='" . htmlspecialchars($row['DEPARTMENT_ID'] ?? '') . "' 
+                data-bs-toggle='modal' data-bs-target='#editModal'>
+                Edit
+            </button>
+            <a href='controllers/delete.php?id=" . htmlspecialchars($row['EMPLOYEE_ID'] ?? '', ENT_QUOTES) . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Apakah Anda yakin ingin menghapus data ini?\")'>Hapus</a>
         </td>
     </tr>";
 
@@ -89,7 +89,7 @@ echo '
                 <h1 class="modal-title fs-5" id="formModalLabel">Tambah Pegawai</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST">
+            <form action="controllers/insert.php" method="POST">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="nip" class="form-label">NIP</label>
@@ -175,6 +175,7 @@ echo '
     </div>
 </div>
 ';
+
 
 include "template/footer.php";
 ?>
